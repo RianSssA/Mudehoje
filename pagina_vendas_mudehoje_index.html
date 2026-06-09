@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit Financas do Zero — mudehoje</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5; color: #212121; }
+
+  /* HERO */
+  .hero {
+    background: #1B5E20;
+    color: white;
+    text-align: center;
+    padding: 48px 20px 40px;
+  }
+  .hero .tag {
+    display: inline-block;
+    background: #66BB6A;
+    color: #1B5E20;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+    letter-spacing: 0.05em;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 5vw, 42px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: #A5D6A7; }
+  .hero p {
+    font-size: clamp(15px, 2.5vw, 18px);
+    color: #C8E6C9;
+    max-width: 560px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+  }
+  .btn-hero {
+    display: inline-block;
+    background: #43A047;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-hero:hover { background: #388E3C; }
+  .hero-sub {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #A5D6A7;
+  }
+
+  /* PROVA SOCIAL */
+  .prova {
+    background: #E8F5E9;
+    border-top: 3px solid #66BB6A;
+    padding: 20px;
+    text-align: center;
+  }
+  .prova p {
+    font-size: 15px;
+    color: #2E7D32;
+    font-weight: 600;
+  }
+
+  /* SEÇÕES */
+  .section { max-width: 640px; margin: 0 auto; padding: 40px 20px; }
+  .section-title {
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 800;
+    color: #1B5E20;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .section-sub {
+    font-size: 15px;
+    color: #616161;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* PROBLEMA */
+  .problema { background: white; }
+  .problema-box {
+    background: #FFEBEE;
+    border-left: 4px solid #C62828;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #B71C1C;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .problema-box::before { content: "❌  "; }
+
+  /* PRODUTO */
+  .produto { background: #f5f5f5; }
+  .produto-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+  }
+  .produto-header {
+    background: #1B5E20;
+    color: white;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .produto-body {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #424242;
+    line-height: 1.7;
+  }
+  .produto-body ul { padding-left: 18px; }
+  .produto-body li { margin-bottom: 6px; }
+
+  /* BENEFÍCIOS */
+  .beneficios { background: white; }
+  .beneficio-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+    background: #F1F8E9;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .beneficio-emoji { font-size: 28px; flex-shrink: 0; }
+  .beneficio-texto h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1B5E20;
+    margin-bottom: 4px;
+  }
+  .beneficio-texto p { font-size: 14px; color: #424242; line-height: 1.5; }
+
+  /* PARA QUEM É */
+  .paraquem { background: #f5f5f5; }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #212121;
+    line-height: 1.5;
+  }
+  .check-item .check { color: #2E7D32; font-size: 18px; flex-shrink: 0; }
+
+  /* PREÇO */
+  .preco-section { background: white; text-align: center; }
+  .preco-card {
+    background: #1B5E20;
+    color: white;
+    border-radius: 16px;
+    padding: 36px 24px;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(27,94,32,0.25);
+  }
+  .preco-de {
+    font-size: 15px;
+    color: #A5D6A7;
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .preco-valor {
+    font-size: 56px;
+    font-weight: 900;
+    color: #A5D6A7;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .preco-valor span { font-size: 24px; vertical-align: top; margin-top: 10px; display: inline-block; }
+  .preco-desc {
+    font-size: 14px;
+    color: #C8E6C9;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .preco-inclui {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 22px;
+    text-align: left;
+  }
+  .preco-inclui p {
+    font-size: 14px;
+    color: #E8F5E9;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .preco-inclui p::before { content: "✅"; font-size: 14px; }
+  .btn-comprar {
+    display: block;
+    background: #43A047;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 18px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: background 0.2s;
+  }
+  .btn-comprar:hover { background: #388E3C; }
+  .preco-seguro {
+    font-size: 12px;
+    color: #A5D6A7;
+    line-height: 1.6;
+  }
+
+  /* GATILHO */
+  .gatilho {
+    background: #FFF8E1;
+    border: 2px solid #F9A825;
+    border-radius: 12px;
+    padding: 20px 22px;
+    max-width: 500px;
+    margin: 24px auto 0;
+    text-align: left;
+  }
+  .gatilho p {
+    font-size: 15px;
+    color: #E65100;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  /* GARANTIAS */
+  .garantias { background: #f5f5f5; }
+  .garantia-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .garantia-item {
+    background: white;
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  }
+  .garantia-item .icon { font-size: 26px; margin-bottom: 8px; }
+  .garantia-item p { font-size: 13px; color: #424242; line-height: 1.4; font-weight: 500; }
+
+  /* FAQ */
+  .faq { background: white; }
+  .faq-item {
+    border-bottom: 1px solid #E0E0E0;
+    padding: 16px 0;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-pergunta {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1B5E20;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .faq-pergunta::before { content: "❓"; font-size: 15px; }
+  .faq-resposta { font-size: 14px; color: #424242; line-height: 1.6; padding-left: 23px; }
+
+  /* FOOTER CTA */
+  .footer-cta {
+    background: #1B5E20;
+    text-align: center;
+    padding: 40px 20px;
+    color: white;
+  }
+  .footer-cta h2 {
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .footer-cta p {
+    font-size: 15px;
+    color: #C8E6C9;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .footer-marca {
+    background: #142e17;
+    text-align: center;
+    padding: 16px 20px;
+    font-size: 12px;
+    color: #616161;
+  }
+
+  @media (max-width: 480px) {
+    .garantia-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .garantia-item { padding: 12px 8px; }
+    .garantia-item .icon { font-size: 20px; }
+    .garantia-item p { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="tag">OFERTA ESPECIAL — R$ 17</div>
+  <h1>Organize suas financas e faca seu <span>primeiro investimento</span> — mesmo ganhando pouco</h1>
+  <p>O kit completo para sair do zero financeiro em 2026. Planilha + Guia de Investimentos. Por menos que um lanche.</p>
+  <a href="https://pay.kiwify.com.br/6T2Ey3Z" class="btn-hero">QUERO O KIT POR R$ 17 AGORA</a>
+  <p class="hero-sub">Pix, cartao ou boleto — acesso imediato apos o pagamento</p>
+</section>
+
+<!-- PROVA SOCIAL -->
+<div class="prova">
+  <p>Mais de 1.800 pessoas ja seguem o metodo mudehoje no TikTok</p>
+</div>
+
+<!-- PROBLEMA -->
+<div class="problema">
+  <div class="section">
+    <h2 class="section-title">Voce se identifica com algum desses?</h2>
+    <p class="section-sub">Se a resposta for sim para qualquer um desses, esse kit foi feito para voce.</p>
+    <div class="problema-box">Chega no fim do mes sem saber para onde foi o dinheiro</div>
+    <div class="problema-box">Quer comecar a investir mas nao sabe por onde comecar</div>
+    <div class="problema-box">Ja tentou se organizar mas desistiu porque era complicado</div>
+    <div class="problema-box">Sabe que a poupanca nao rende mas nao conhece alternativas</div>
+    <div class="problema-box">Sente que o dinheiro nunca e suficiente, independente do salario</div>
+  </div>
+</div>
+
+<!-- PRODUTO -->
+<div class="produto">
+  <div class="section">
+    <h2 class="section-title">O que voce recebe no kit</h2>
+    <p class="section-sub">Dois produtos que juntos cobrem tudo que voce precisa para comecar.</p>
+
+    <div class="produto-card">
+      <div class="produto-header">📊 Planilha de Controle Financeiro</div>
+      <div class="produto-body">
+        <ul>
+          <li>12 meses ja configurados — so abrir e usar</li>
+          <li>Categorias prontas com emoji (alimentacao, gasolina, contas...)</li>
+          <li>Saldo do mes calcula automatico conforme voce digita</li>
+          <li>Reserva de emergencia com barra de progresso visual</li>
+          <li>Saldo passa automaticamente para o mes seguinte</li>
+          <li>Funciona no celular e no computador (Excel e Google Sheets)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="produto-card">
+      <div class="produto-header">📘 Guia: Seus Primeiros Investimentos</div>
+      <div class="produto-body">
+        <ul>
+          <li>Por que a poupanca esta te prejudicando agora</li>
+          <li>Como ativar a Caixinha do Nubank em menos de 2 minutos</li>
+          <li>O que e o Tesouro Direto e como comprar com R$ 30</li>
+          <li>CDB explicado do zero — sem jargao de banco</li>
+          <li>Comparativo real: poupanca vs investimentos</li>
+          <li>Plano de acao: o que fazer essa semana, esse mes e nos proximos meses</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFÍCIOS -->
+<div class="beneficios">
+  <div class="section">
+    <h2 class="section-title">Por que funciona mesmo para iniciantes</h2>
+    <div class="beneficio-item">
+      <div class="beneficio-emoji">⚡</div>
+      <div class="beneficio-texto">
+        <h3>Simples de usar desde o primeiro dia</h3>
+        <p>Sem formula complicada, sem configuracao. Voce abre, digita seus valores e o saldo aparece sozinho.</p>
+      </div>
+    </div>
+    <div class="beneficio-item">
+      <div class="beneficio-emoji">📱</div>
+      <div class="beneficio-texto">
+        <h3>Funciona no celular</h3>
+        <p>Compativel com Google Sheets e Excel. Use onde preferir, quando preferir.</p>
+      </div>
+    </div>
+    <div class="beneficio-item">
+      <div class="beneficio-emoji">🏦</div>
+      <div class="beneficio-texto">
+        <h3>Investimentos explicados do zero</h3>
+        <p>O guia foi escrito para quem nunca investiu nada. Sem linguagem de banco, sem enrolacao.</p>
+      </div>
+    </div>
+    <div class="beneficio-item">
+      <div class="beneficio-emoji">🚀</div>
+      <div class="beneficio-texto">
+        <h3>Resultado imediato</h3>
+        <p>Voce pode ativar seu primeiro investimento ainda hoje, seguindo o passo a passo do guia.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARA QUEM É -->
+<div class="paraquem">
+  <div class="section">
+    <h2 class="section-title">Esse kit e para voce se...</h2>
+    <div class="check-item"><span class="check">✅</span> Voce tem entre 18 e 40 anos e nunca organizou as financas de verdade</div>
+    <div class="check-item"><span class="check">✅</span> Voce quer comecar a investir mas acha que precisa de muito dinheiro</div>
+    <div class="check-item"><span class="check">✅</span> Voce quer parar de apenas sobreviver e comecar a construir algo</div>
+    <div class="check-item"><span class="check">✅</span> Voce ja tentou planilha antes mas era complicada demais</div>
+    <div class="check-item"><span class="check">✅</span> Voce quer uma solucao simples, pratica e que funcione de verdade</div>
+  </div>
+</div>
+
+<!-- PREÇO -->
+<div class="preco-section">
+  <div class="section">
+    <h2 class="section-title">Investimento</h2>
+    <div class="preco-card">
+      <p class="preco-de">De R$ 47</p>
+      <div class="preco-valor"><span>R$</span> 17</div>
+      <p class="preco-desc">Pagamento unico. Acesso vitalicio. Sem mensalidade.</p>
+      <div class="preco-inclui">
+        <p>Planilha de Controle Financeiro (Excel)</p>
+        <p>Guia de Investimentos do Zero (PDF)</p>
+        <p>Acesso imediato apos o pagamento</p>
+        <p>Funciona no celular e no computador</p>
+      </div>
+      <a href="https://pay.kiwify.com.br/6T2Ey3Z" class="btn-comprar">QUERO O KIT POR R$ 17 AGORA</a>
+      <p class="preco-seguro">🔒 Pagamento seguro via Kiwify<br>Pix, cartao de credito ou boleto</p>
+    </div>
+    <div class="gatilho">
+      <p>💡 R$ 17 e menos que um lanche do iFood. Mas ao contrario do lanche, esse kit pode mudar como voce lida com dinheiro para sempre.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GARANTIAS -->
+<div class="garantias">
+  <div class="section">
+    <div class="garantia-grid">
+      <div class="garantia-item">
+        <div class="icon">⚡</div>
+        <p>Entrega imediata no e-mail</p>
+      </div>
+      <div class="garantia-item">
+        <div class="icon">📱</div>
+        <p>Funciona no celular e PC</p>
+      </div>
+      <div class="garantia-item">
+        <div class="icon">🔒</div>
+        <p>Pagamento 100% seguro</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <div class="section">
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <div class="faq-item">
+      <p class="faq-pergunta">Preciso saber usar Excel para usar a planilha?</p>
+      <p class="faq-resposta">Nao. A planilha foi feita para quem nunca usou Excel na vida. Voce so digita os valores e tudo calcula sozinho.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-pergunta">Funciona no celular?</p>
+      <p class="faq-resposta">Sim. Funciona no Google Sheets (Android e iPhone) e no Excel. Gratis.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-pergunta">Preciso ter muito dinheiro para investir?</p>
+      <p class="faq-resposta">Nao. O guia mostra como comecar com R$ 30 no Tesouro Direto e R$ 1 na Caixinha do Nubank.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-pergunta">Como recebo o produto?</p>
+      <p class="faq-resposta">Imediatamente apos a confirmacao do pagamento, voce recebe um e-mail com o link para acessar e baixar os arquivos.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-pergunta">E so essa compra ou tem mensalidade?</p>
+      <p class="faq-resposta">E uma compra unica de R$ 17. Sem mensalidade, sem renovacao. Acesso vitalicio.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <h2>Pare de adiar. Comece hoje.</h2>
+  <p>Por R$ 17 voce tem tudo que precisa para organizar suas financas e fazer o primeiro investimento ainda essa semana.</p>
+  <a href="https://pay.kiwify.com.br/6T2Ey3Z" class="btn-hero">QUERO O KIT POR R$ 17 AGORA</a>
+  <p style="margin-top:12px;font-size:13px;color:#A5D6A7;">Pix, cartao ou boleto — acesso imediato</p>
+</div>
+
+<div class="footer-marca">
+  mudehoje · Produto digital · Entrega por e-mail · @mudehoje no TikTok
+</div>
+
+</body>
+</html>
